@@ -25,8 +25,18 @@ persist_with: vysakh_import_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
+map_layer: my_neighborhood_layer {
+  url: "https://raw.githubusercontent.com/cooluser/JSON_Stuff/master/Neighborhoods.topoJSON"
+  property_key: "neighborhood"
+}
+map_layer: new_map {
+  file: "/maps/json1.topojson"
+  # property_key: "neighborhood"
+}
+map_layer: new_maps {
+  file: "/maps/json1.topojson"
 
-
+}
 explore: flights {}
 
 
