@@ -64,6 +64,6 @@ explore: order_items {
 explore: users {
   access_filter: {
     field: users.state
-   user_attribute: newattribute
+   user_attribute: new_attribute
   }
 }
