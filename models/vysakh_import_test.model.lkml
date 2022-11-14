@@ -1,9 +1,9 @@
 # Define the database connection to be used for this model.
 connection: "thelook"
-
+include: "/sql_runner_query.view.lkml"
 # include all the views
 include: "/views/**/*.view"
-
+#include: "/maps"
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
 
@@ -11,7 +11,7 @@ datagroup: vysakh_import_test_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-
+explore: sql_runner_query {}
 persist_with: vysakh_import_test_default_datagroup
 
 # Explores allow you to join together different views (database tables) based on the
@@ -26,9 +26,15 @@ persist_with: vysakh_import_test_default_datagroup
 # Each joined view also needs to define a primary key.
 
 
+map_layer: new_maps {
+  file: "/maps/json1.topojson"
 
+}
 
-
+map_layer: new_map {
+  file: "/maps/json1.topojson"
+ # property_key: "neighborhood"
+}
 explore: order_items {
   join: orders {
     type: left_outer
@@ -52,5 +58,12 @@ explore: order_items {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
+  }
+
+}
+explore: users {
+  access_filter: {
+    field: users.state
+   user_attribute: newattribute
   }
 }
