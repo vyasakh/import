@@ -30,6 +30,7 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Status" in Explore.
