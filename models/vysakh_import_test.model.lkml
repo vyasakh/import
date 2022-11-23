@@ -3,17 +3,17 @@ connection: "thelook"
 include: "/sql_runner_query.view.lkml"
 # include all the views
 include: "/views/**/*.view"
-#include: "/maps"
+include: "/new11.view.lkml"
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
-
+include: "/attribute.dashboard.lookml"
 datagroup: vysakh_import_test_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 explore: sql_runner_query {}
 persist_with: vysakh_import_test_default_datagroup
-
+explore: new11 {}
 # Explores allow you to join together different views (database tables) based on the
 # relationships between fields. By joining a view into an Explore, you make those
 # fields available to users for data analysis.

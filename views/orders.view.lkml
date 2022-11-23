@@ -17,6 +17,7 @@ view: orders {
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
   dimension_group: created {
+    label: "cohort"
     type: time
     timeframes: [
       raw,
@@ -49,7 +50,21 @@ view: orders {
     type: count
     drill_fields: [detail*]
   }
-
+  dimension_group: c {
+    description: "The calendar month in which the user made their first deposit on the platform."
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    group_label: "Key User Info"
+    sql: ${TABLE}.cohort ;;
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

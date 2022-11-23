@@ -41,6 +41,7 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+   # suggest_persist_for: "5 hours"
   }
 
   dimension: country {
@@ -74,7 +75,16 @@ dimension:new_maps{
     type: string
     sql: ${TABLE}.email ;;
   }
-
+  dimension: license_start {
+    type: date
+    sql: ${created_date} ;;
+    html: {{ rendered_value | date: "%m/%d/%Y" }} ;;
+  }
+  dimension: license_start1 {
+    type: date_time
+    sql: ${created_date} ;;
+    html: {{ rendered_value | date: "%m/%d/%Y" }} ;;
+  }
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
@@ -94,6 +104,13 @@ dimension:new_maps{
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
+    link: {
+
+    label: "url"
+
+     url:"https://gcpl2218.cloud.looker.com/looks/126?f[users.state]={{ _filters['users.state'] | url_encode }}&f[users.city]={{ _filters['users.city'] | url_encode }}"
+    }
+
   }
 
   dimension: zip {
@@ -164,17 +181,21 @@ dimension:new_maps{
            {% elsif geography_parameters_chart._parameter_value == 'subtype' %}
           ${first_name}
           {% else %}
-          ${city}
+          ${first_name}
           {% endif %};;
   }
-
+parameter: date {
+  type: date
+}
   measure: count {
     type: count
-   # drill_fields: [detail*]
+   drill_fields: [detail*]
+  html: <a href="https://gcpl2218.cloud.looker.com/explore/vysakh_import_test/users?fields=users.state,users.count&f[users.state]={{ _filters['users.state'] | url_encode }}">{{value}}</a> ;;
   }
 measure: xx {
   type: number
   sql: ${id}+${count} ;;
+  html: <d>{{count._value}}</d> ;;
 }
   # ----- Sets of fields for drilling ------
   set: detail {

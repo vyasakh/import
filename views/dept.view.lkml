@@ -25,5 +25,6 @@ view: dept {
   measure: count {
     type: count
     drill_fields: [dept_id, dept_name, salary.count]
+
   }
 }
