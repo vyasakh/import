@@ -4,7 +4,7 @@
 
 LookML is a data modeling language for describing dimensions, fields, aggregates and relationships based on SQL.
 
-LookML is powerful because it:
+LookML is powerful because it::
 
 - **Is all about reusability**: Most data analysis requires the same work to be done over and over again. You extract
 raw data, prepare it, deliver an analysis... and then are never able touse any of that work again. This is hugely
