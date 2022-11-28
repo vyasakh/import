@@ -7,9 +7,9 @@ view: new11 {
 
   }
 
-  dimension: gender {
+  dimension: gen {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: ${TABLE}.gen ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.

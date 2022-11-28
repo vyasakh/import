@@ -91,9 +91,9 @@ dimension:new_maps{
     drill_fields: [id]
   }
 
-  dimension: gender {
+  dimension: gen {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: ${TABLE}.gen ;;
   }
 
   dimension: last_name {
@@ -175,7 +175,7 @@ dimension:new_maps{
           {% elsif geography_parameters_chart._parameter_value == 'prin' %}
           ${email}
           {% elsif geography_parameters_chart._parameter_value == 'brand' %}
-          ${gender}
+          ${gen}
           {% elsif geography_parameters_chart._parameter_value == 'type' %}
           ${last_name}
            {% elsif geography_parameters_chart._parameter_value == 'subtype' %}
@@ -197,6 +197,11 @@ measure: xx {
   sql: ${id}+${count} ;;
   html: <d>{{count._value}}</d> ;;
 }
+  measure: last_updated_date {
+    type: date
+    sql: MAX(${created_date}) ;;
+    convert_tz: no
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
