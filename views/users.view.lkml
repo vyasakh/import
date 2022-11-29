@@ -23,6 +23,15 @@ view: users {
     drill_fields: [id]
 
   }
+  dimension: iddd {
+    type: number
+    hidden: yes
+    sql: ${id} ;;
+  }
+  dimension: id11 {
+    type: number
+    sql: ${iddd} ;;
+  }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
