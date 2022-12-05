@@ -11,6 +11,7 @@ view: dept {
     primary_key: yes
     type: number
     sql: ${TABLE}.DeptID ;;
+    fanout_on: "dept_name"
   }
 
   # Here's what a typical dimension looks like in LookML.
