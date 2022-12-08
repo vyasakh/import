@@ -17,6 +17,8 @@ view: orders {
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
   dimension_group: created {
+    label: "created at"
+    description: "The date order created at "
     type: time
     timeframes: [
       raw,
@@ -38,7 +40,10 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
   }
-
+  measure: date {
+    type: date_time
+    sql: ${created_time} ;;
+  }
   dimension: user_id {
     type: number
     # hidden: yes

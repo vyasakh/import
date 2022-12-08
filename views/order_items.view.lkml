@@ -55,6 +55,10 @@ view: order_items {
     ]
     sql: ${TABLE}.returned_at ;;
   }
+  dimension: Test_date{
+    type: string
+    sql: returned_time ;;
+  }
 
   dimension: sale_price {
     type: number
@@ -74,6 +78,12 @@ view: order_items {
     type: average
     sql: ${sale_price} ;;
   }
+  measure: Hold {
+    type: number
+    sql: Round(${average_sale_price}/${count},2);;
+    value_format: "0.00\%"
+  }
+
 
   measure: count {
     type: count
