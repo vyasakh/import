@@ -98,7 +98,10 @@ view: users {
     type: count
     drill_fields: [detail*]
   }
-
+  measure: UC {
+    type: number
+    sql: ${count} * 102020 ;;
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

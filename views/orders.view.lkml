@@ -54,7 +54,12 @@ view: orders {
     type: count
     drill_fields: [detail*]
   }
-
+  measure: OC {
+    type: number
+    drill_fields: [id, users.id, users.first_name, order_items.count]
+    value_format_name: percent_1
+    sql: ${count}/10000 ;;
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
