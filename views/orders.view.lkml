@@ -44,6 +44,13 @@ view: orders {
     # hidden: yes
     sql: ${TABLE}.user_id ;;
   }
+  measure: ocountss {
+    type: number
+    drill_fields: [id, users.id, users.first_name, order_items.count]
+    value_format_name: percent_1
+    sql: ${count}/10000 ;;
+  }
+
 
   measure: count {
     type: count

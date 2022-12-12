@@ -65,7 +65,11 @@ view: products {
     type: string
     sql: ${TABLE}.sku ;;
   }
-
+  measure: pcountss {
+    type: number
+    drill_fields: [id, item_name, product_sheets.count, inventory_items_vijaya.count, inventory_items.count]
+    sql: ${count} * 102020 ;;
+  }
   measure: count {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
